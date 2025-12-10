@@ -1,0 +1,34 @@
+Caso 1: Articulos ML
+
+Usé Regresión Lineal porque quería predecir el número de veces que se comparte un artículo a partir
+de características como cantidad de palabras, enlaces, comentarios, imágenes y días transcurridos. 
+Elegí este modelo porque es fácil de interpretar, permite entender cómo cada variable influye en el 
+resultado y es rápido de entrenar. También probé Ridge para mejorar la estabilidad del modelo cuando 
+las variables estaban correlacionadas, evitando sobreajuste y obteniendo predicciones más confiables. 
+Escalé los datos para que todas las variables tuvieran la misma importancia y evalué la calidad del modelo 
+usando R², RMSE y el score, comparando modelos sin escalado, con escalado y optimizados.
+
+Caso 2: Usuarios Win, Mac y Lin
+
+Utilicé el árbol de decisiones porque este modelo me permite comprender cómo se toman las decisiones de 
+clasificación de manera visual y transparente. Su estructura facilita identificar qué variables tienen mayor 
+peso en la predicción y cómo se dividen los datos en cada paso. Además, no requiere un preprocesamiento complejo, 
+maneja bien relaciones no lineales y ofrece un buen equilibrio entre simplicidad y desempeño. Por estas razones, 
+resultó una opción adecuada para analizar y clasificar a los usuarios.
+
+Caso 3: Housing
+
+Utilice el algoritmo K-Means porque me permite identificar patrones y agrupar viviendas con características similares
+sin necesidad de conocer previamente las clases. Este método me resulta adecuado cuando busco segmentar los datos de 
+manera automática y descubrir estructuras ocultas dentro del conjunto. Además, con K-Means me es mas eficiente, me
+funciona bien para manejar grandes volúmenes de información y ofrece métricas sólidas como inercia y silhouette que facilitan 
+evaluar la calidad de los clusters. Por estas razones, fue una herramienta apropiada para analizar y clasificar las zonas 
+de vivienda en el dataset.
+
+Caso 4: Load Wine
+
+Elegi usar el Análisis de Componentes Principales (PCA) al dataset Wine porque me permite reducir la 
+dimensionalidad de las variables originales y eliminar la correlación entre ellas. Utilice 5 componentes porque, 
+tras analizar la varianza explicada acumulada, vi que capturan la mayor parte de la información del dataset 
+sin perder detalles importantes. Elegi cinco componentes por que facilita la visualización de las clases de vino y mejora la 
+eficiente del modelo de clasificación.
