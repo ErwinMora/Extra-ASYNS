@@ -11,7 +11,7 @@ from sklearn.metrics import davies_bouldin_score, calinski_harabasz_score
 # %% Cargar datos y preparar variables
 datos = pd.read_csv("data/housing.csv").dropna()
 datos = pd.get_dummies(datos, drop_first=True)
-X = datos.drop("median_house_value", axis=1)
+X = datos.drop("median_house_value", axis=1) 
 
 max_k = min(10, len(datos) - 1)
 valores_k = range(2, max_k + 1)

@@ -6,7 +6,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
 import matplotlib.pyplot as plt
 import seaborn as sns
-from sklearn.tree import plot_tree
+from sklearn.tree import plot_tree 
 
 # %% Cargar datos
 datos = pd.read_csv("data/usuarios_win_mac_lin.csv")
