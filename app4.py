@@ -8,6 +8,8 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import GridSearchCV
 from sklearn.pipeline import Pipeline
 from sklearn.linear_model import LogisticRegression
+from mpl_toolkits.mplot3d import Axes3D
+
 
 # %% CARGAR DATOS
 datos = pd.read_csv("data/load_wine.csv")
@@ -70,14 +72,18 @@ componentes_escalados = modelo_pca_escalado.fit_transform(X_scaled)
 # Varianza explicada escalado
 varianza_con = modelo_pca_escalado.explained_variance_ratio_
 
-# %% Gráfica de varianza con escalado
+# %% Gráfica de varianza acumulada en barras
 plt.figure(figsize=(8,4))
-plt.plot(np.cumsum(varianza_con), marker='o')
+plt.bar(range(1, len(varianza_con) + 1), np.cumsum(varianza_con))
+
 plt.title("Varianza explicada acumulada - PCA con escalado")
 plt.xlabel("Número de Componentes")
 plt.ylabel("Varianza Acumulada")
-plt.grid()
+plt.xticks(range(1, len(varianza_con) + 1))  # para ver cada barra
+plt.grid(axis="y")
+
 plt.show()
+
 
 # %% GRAFICAR COMPONENTES (escalados)
 plt.figure(figsize=(8,5))
@@ -135,13 +141,19 @@ print("Número óptimo de componentes PCA:", n_componentes_optimo)
 modelo_pca_optimizado = PCA(n_components=n_componentes_optimo)
 componentes_opt = modelo_pca_optimizado.fit_transform(X_scaled)
 
-# %% GRAFICA PCA OPTIMIZADO
-plt.figure(figsize=(8,5))
-plt.scatter(componentes_opt[:,0], componentes_opt[:,1], c=y, cmap="turbo")
-plt.title(f"PCA Optimizado ")
-plt.xlabel("PC1")
-plt.ylabel("PC2")
-plt.grid()
+# %%Gráfica PCA OPTIMIZADO en 3D
+fig = plt.figure(figsize=(8,6))
+ax = fig.add_subplot(111, projection='3d')
+
+ax.scatter(
+    componentes_opt[:, 0],
+    componentes_opt[:, 1],
+    componentes_opt[:, 2],
+    c=y                      # usa los colores por defecto según las clases
+)
+
+ax.set_title("PCA Optimizado (3D)")
+ax.set_xlabel("PC1")
+ax.set_ylabel("PC2")
+ax.set_zlabel("PC3")
 plt.show()
-
-
